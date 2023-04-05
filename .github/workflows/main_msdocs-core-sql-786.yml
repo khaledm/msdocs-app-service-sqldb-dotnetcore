@@ -23,13 +23,13 @@ jobs:
           include-prerelease: true
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release --verbose
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp --verbose
 
       - name: dotnet install ef
-        run: dotnet tool install -g dotnet-ef
+        run: dotnet tool install -g dotnet-ef --verbose
       
       - name: dotnet bundle migration
         run: dotnet ef migrations bundle -p DotNetCoreSqlDb/DotNetCoreSqlDb.csproj -o ${{env.DOTNET_ROOT}}/myapp/migrate -v
